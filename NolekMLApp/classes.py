@@ -1,8 +1,8 @@
 import datetime as dt
 
 class testData:
-    logTime = []
-    stepNo = []
+    logTimes = []
+    stepNos = []
     b31 = []
     b32 = []
     b22 = []
@@ -11,19 +11,22 @@ class testData:
     # y_max = float()
     
     def __init__(self, _logTime, _stepNo, _b31, _b32, _b22):
-        # self.SetLogTime(_logTime)
+        self.SetLogTime(_logTime)
         self.SetStepNo(_stepNo)
         self.SetB31(_b31)
         self.SetB32(_b32)
         self.SetB22(_b22)
         
     def SetLogTime(self, valList):
+        dt_obj = None
         for x in valList:
-            self.logTime.append(dt.datetime(x))
+            dt_obj = dt.datetime.strptime(x, '%d/%m/%Y %H.%M.%S')
+            self.logTimes.append(dt_obj)
+            
     
     def SetStepNo(self, valList):
         for x in valList:
-            self.stepNo.append(x)
+            self.stepNos.append(x)
     
     def SetB31(self, valList):
         for str in valList:
