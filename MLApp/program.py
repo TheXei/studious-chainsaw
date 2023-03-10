@@ -3,8 +3,8 @@ from matplotlib import pyplot as plt
 from matplotlib import dates as mdates
 import classes as cls
 
-data = pd.read_csv('C:\\Users\Marcus\Documents\studious-chainsaw\Marcus-Test-Data\D22102_R1.1_NolekTest_230226.csv', sep=';')
-logTime = data['LogTime']
+data = pd.read_csv('C:\\Users\Marcus\Documents\studious-chainsaw\Marcus-Test-Data\D22102_R1.1_Test_230226.csv', sep=';')
+logTime = data['Log Time']
 stepNo = data['StepNo']
 b31 = data['B31']
 b32 = data['B32']
