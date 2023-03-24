@@ -3,6 +3,9 @@ from matplotlib import pyplot as plt
 from matplotlib import dates as mdates
 import classes as cls
 
+# plt.style.use('fivethirtyeight')
+
+
 data = pd.read_csv('C:\\Users\Marcus\Documents\studious-chainsaw\Marcus-Test-Data\D22102_R1.1_Test_230226.csv', sep=';')
 logTime = data['Log Time']
 stepNo = data['StepNo']
@@ -36,10 +39,10 @@ ax1.set_ylabel("StepNo")
 
 plt.title("Presure Test")
 plt.gcf().autofmt_xdate()
-plt.tight_layout()
 ax[0].legend(loc=9)
 ax0.legend()
 ax[1].legend(loc=9)
 ax1.legend()
 
+plt.tight_layout()
 plt.show()
