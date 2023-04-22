@@ -11,6 +11,15 @@ class testData:
     # y_max = float()
     
     def __init__(self, _logTime, _stepNo, _b31, _b32, _b22):
+        """_summary_
+
+        Args:
+            _logTime (DateTime): Day and Time of logging
+            _stepNo (Integer): The step number the test is at
+            _b31 (Float): Temperature at B31 sensor
+            _b32 (Float): Temperature at B32 sensor
+            _b22 (Float): Preasure in bar at B22 sensor
+        """
         self.SetLogTime(_logTime)
         self.SetStepNo(_stepNo)
         self.SetB31(_b31)
