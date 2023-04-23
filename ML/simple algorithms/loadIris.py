@@ -11,7 +11,7 @@ from adaline import AdalineSGD as ASGD
 
 # print('From URL:', s)
 
-df = pd.read_csv('C:\\Users\Marcus\Documents\studious-chainsaw\ML\iris.csv', header=None, encoding='utf-8')
+df = pd.read_csv('ML\simple algorithms\iris.csv', header=None, encoding='utf-8')
 
 # select setosa and versicolor
 y = df.iloc[0:100, 4].values
