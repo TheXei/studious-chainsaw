@@ -20,7 +20,7 @@ class AdalineGD:
             b_ : Scalar
                 Bias unit after fitting.
             losses_ : list
-                Mean squared eror loss function values in each epoch.
+                Mean squared error loss function values in each epoch.
         """
         
         self.eta = eta
