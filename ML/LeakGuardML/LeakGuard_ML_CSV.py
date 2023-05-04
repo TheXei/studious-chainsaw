@@ -1,6 +1,7 @@
 from matplotlib import pyplot as plt
 from matplotlib.animation import FuncAnimation
 from matplotlib import dates as mdates
+import numpy as np
 import pandas as pd
 import datetime as dt
 
