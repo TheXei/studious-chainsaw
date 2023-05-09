@@ -4,15 +4,16 @@ import datetime as dt
 def test_script_csv():
     """
         Load in a CSV file and converting some of the data so it can be used in this script
+        Starts by converting the dataframes discovered in pandas into lists, which can be used further down in the script
     """
     data = pd.read_csv('Marcus-Test-Data\D22102_R1.1_Test_230226.csv', sep=';')
     presure = []
     logTimes = []
-    stepNos =[]
+    stepNos = []
     
-    for str in data['B22']:
-        if "," in str:
-            myStr = str.replace(",", ".")
+    for x in data['B22']:
+        if "," in x:
+            myStr = x.replace(",", ".")
             presure.append(float(myStr))
         else:
             presure.append(float(str))
@@ -24,9 +25,6 @@ def test_script_csv():
     for x in data['StepNo']:
         stepNos.append(x)
     
-    time_list = []
-    step_list = []
-    presure_list = []
     test_list = []
     success = 0
     fails = 0
@@ -39,9 +37,6 @@ def test_script_csv():
     """
         
     for time,step,pres in zip(logTimes, stepNos, presure):
-        time_list.append(time)
-        step_list.append(step)
-        presure_list.append(pres)
         if step == 44000 or step == 44500 or step == 45000:
             test_list.append(pres)
             if len(test_list) >= 2:
@@ -51,6 +46,7 @@ def test_script_csv():
                     success = success + 1
                 else:
                     print(pres_diff, ', Fail')
+                    print('Failure discovered at: ', time)
                     fails = fails + 1
                     break
         else:
