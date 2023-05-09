@@ -2,26 +2,26 @@ import pandas as pd
 import datetime as dt
 
 def test_script_csv():
+    """
+        Load in a CSV file and converting some of the data so it can be used in this script
+    """
     data = pd.read_csv('Marcus-Test-Data\D22102_R1.1_Test_230226.csv', sep=';')
-    logTime = data['Log Time']
-    stepNo = data['StepNo']
-    b22 = data['B22']
     presure = []
     logTimes = []
     stepNos =[]
     
-    for str in b22:
+    for str in data['B22']:
         if "," in str:
             myStr = str.replace(",", ".")
             presure.append(float(myStr))
         else:
             presure.append(float(str))
     
-    for x in logTime:
+    for x in data['Log Time']:
         dt_obj = dt.datetime.strptime(x, '%d/%m/%Y %H.%M.%S')
         logTimes.append(dt_obj)
         
-    for x in stepNo:
+    for x in data['StepNo']:
         stepNos.append(x)
     
     time_list = []
@@ -31,6 +31,13 @@ def test_script_csv():
     success = 0
     fails = 0
     
+    """
+        Main part of the script
+        Looks at each data entry for presure, and compares it to the previous data entry, but only for the data entry which is part of the step number between 44000 and 45000
+        if the difference between the two data points is less than 0.1%, the test is successful
+        but if the difference is higher, the test fails
+    """
+        
     for time,step,pres in zip(logTimes, stepNos, presure):
         time_list.append(time)
         step_list.append(step)
@@ -40,42 +47,17 @@ def test_script_csv():
             if len(test_list) >= 2:
                 pres_diff = test_list[-2] / test_list[-1]
                 if pres_diff > 0.99 and pres_diff < 1.01:
-                    print('Success')
+                    print(pres_diff, ', Success')
                     success = success + 1
                 else:
-                    print('Fail')
+                    print(pres_diff, ', Fail')
                     fails = fails + 1
+                    break
         else:
             continue
-
-    print('Number of sucesses: ', success)
+        
+    # Printing the number of successes and fails discovered in the script
+    print('Number of successes: ', success)
     print('Number of fails: ', fails)
 
 test_script_csv()
-
-        
-# ani = FuncAnimation(plt.gcf(), test_script_csv, interval=1000)
-
-# plt.tight_layout()
-# plt.show()
-
-
-        # plt.cla()
-    
-        # fig, ax = plt.subplots()
-        
-        # plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%d/%m/%y %H:%M'))
-        # plt.gca().xaxis.set_major_locator(mdates.MinuteLocator(interval=15))
-        
-        # ax.plot(time_list, presure_list, 'b', label='Presure at B22 sensor')
-        # ax.set_xlabel("Time of measurement")
-        # ax.set_ylabel("Presure in bar")
-        # ax0 = ax.twinx()
-        # ax0.plot(time_list, step_list, 'g--', label='StepNo')
-        # ax0.set_ylabel("StepNo")
-        
-        # plt.title("Presure Test")
-        # plt.gcf().autofmt_xdate()
-        # ax.legend(loc=9)
-        # ax0.legend()
-        # plt.tight_layout()
