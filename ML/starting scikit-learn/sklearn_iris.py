@@ -29,8 +29,8 @@ X_test_std = sc.transform(X_test)
 # ppn = Perceptron(eta0=0.1, random_state=1)
 # ppn.fit(X_train_std, y_train)
 
+# print('Misclassified: %d' % (y_test != y_pred).sum())
 # y_pred = ppn.predict(X_test_std)
-# # print('Misclassified: %d' % (y_test != y_pred).sum())
 
 X_combined_std = np.vstack((X_train_std, X_test_std))
 X_combined = np.vstack((X_train, X_test))
@@ -89,8 +89,11 @@ pdr.plot_decision_regions_idx(X_combined_std, y_combined, classifier=knn, test_i
 
 plt.xlabel('Petal length [standardized]')
 plt.ylabel('Petal width [standardized]')
+plt.legend(loc='upper left')
 # plt.xlabel('Petal length [cm]')
 # plt.ylabel('Petal width [cm]')
-plt.legend(loc = 'upper left')
+# plt.legend(loc = 'upper left')
+
+
 plt.tight_layout()
 plt.show()
