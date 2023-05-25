@@ -6,7 +6,7 @@ import classes as cls
 # plt.style.use('fivethirtyeight')
 
 
-data = pd.read_csv('C:\\Users\Marcus\Documents\studious-chainsaw\Marcus-Test-Data\D22102_R1.1_Test_230226.csv', sep=';')
+data = pd.read_csv('Marcus-Test-Data\D22102_R1.1_Test_230226.csv', sep=';')
 logTime = data['Log Time']
 stepNo = data['StepNo']
 b31 = data['B31']
