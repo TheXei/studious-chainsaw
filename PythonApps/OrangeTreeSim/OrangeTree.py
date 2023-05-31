@@ -1,10 +1,4 @@
 class OrangeTree:
-    age = int()
-    height = int()
-    treeAlive = bool()
-    numOranges = int()
-    orangesEaten = int()
-    
     def __init__(self, age, height, treeAlive):
         try: 
             if age >= 0: self.age = age
